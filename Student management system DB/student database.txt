@@ -1,0 +1,113 @@
+D:\sqlite>sqlite3 studentdb.db
+SQLite version 3.43.1 2023-09-11 12:01:27
+Enter ".help" for usage hints.
+sqlite> .databases
+main: D:\sqlite\studentdb.db r/w
+sqlite> .open studentdb.db
+sqlite> CREATE TABLE course(cnum varchar(8) NOT NULL, cname varchar(30) NOT NULL, PRIMARY KEY (cnum));
+sqlite> INSERT INTO course VALUES ('CSE411', 'Computer Graphics');
+sqlite> SELECT * FROM course;
+CSE411|Computer Graphics
+sqlite> INSERT INTO course VALUES ('CSE412', 'Big Data');
+sqlite> INSERT INTO course VALUES ('ICS411', 'BTP');
+sqlite> INSERT INTO course VALUES ('ICS412', 'Cryptography');
+sqlite> INSERT INTO course VALUES ('IOE411', 'Blockchain');
+sqlite> SELECT * FROM course;
+CSE411|Computer Graphics
+CSE412|Big Data
+ICS411|BTP
+ICS412|Cryptography
+IOE411|Blockchain
+sqlite> INSERT INTO course VALUES ('CSE321', 'Microprocessors');
+sqlite> INSERT INTO course VALUES ('CSE322','Cloud computing');
+sqlite> INSERT INTO course VALUES ('ICS321','Data mining');
+sqlite> INSERT INTO course VALUES ('ICS212','Operating system');
+sqlite> INSERT INTO course VALUES ('ICS213','DBMS');
+sqlite> INSERT INTO course VALUES ('ICS111','IT Workshop 1');
+sqlite> SELECT * FROM COURSE;
+CSE411|Computer Graphics
+CSE412|Big Data
+ICS411|BTP
+ICS412|Cryptography
+IOE411|Blockchain
+CSE321|Microprocessors
+CSE322|Cloud computing
+ICS321|Data mining
+ICS212|Operating system
+ICS213|DBMS
+ICS111|IT Workshop 1
+sqlite> CREATE TABLE professor(pno integer NOT NULL, pname varchar(20) NOT NULL, dept varchar(20), PRIMARY KEY (pno));
+sqlite> INSERT INTO professor VALUES (1,'KG','CSE');
+sqlite> INSERT INTO professor VALUES (2,'BSP','CSE');
+sqlite> INSERT INTO professor VALUES (3,'PVM','CY');
+sqlite> INSERT INTO professor VALUES (4,'GM','CSE');
+
+sqlite> INSERT INTO professor VALUES (5,'RGK','ECE');
+sqlite> INSERT INTO professor VALUES (6,'VP','CSE');
+sqlite> SELECT * FROM professor;
+1|KG|CSE
+2|BSP|CSE
+3|PVM|CY
+4|GM|CSE
+5|RGK|ECE
+6|VP|CSE
+sqlite> CREATE TABLE student(sno varchar(10) NOT NULL, sname varchar(20) NOT NULL, batch integer, PRIMARY KEY (sno));
+sqlite> INSERT INTO student VALUES ('2020BCS0001','ADK',2020);
+sqlite> INSERT INTO student VALUES ('2020BCS0002','ADK',2020);
+sqlite> INSERT INTO student VALUES ('2020BCS0024','SS',2020);
+sqlite> INSERT INTO student VALUES ('2020BCS0089','KS',2020);
+sqlite> INSERT INTO student VALUES ('2020BCS0139','AJK',2020);
+sqlite> INSERT INTO student VALUES ('2020BCS0148','JMJ',2020);
+sqlite> INSERT INTO student VALUES ('2020BCS0004','IKS',2020);
+sqlite> INSERT INTO student VALUES ('2020BCS0037','AS',2020);
+sqlite> INSERT INTO student VALUES ('2021BCS0027','ASJ',2021);
+sqlite> INSERT INTO student VALUES ('2021BCS0162','PA',2021);
+sqlite> INSERT INTO student VALUES ('2022BEC0022','SA',2022);
+sqlite> INSERT INTO student VALUES ('2022BEC0141','AAJ',2022);
+sqlite> INSERT INTO student VALUES ('2023BCS0045','CT',2023);
+sqlite> SELECT * FROM student;
+2020BCS0001|ADK|2020
+2020BCS0002|ADK|2020
+2020BCS0024|SS|2020
+2020BCS0089|KS|2020
+2020BCS0139|AJK|2020
+2020BCS0148|JMJ|2020
+2020BCS0004|IKS|2020
+2020BCS0037|AS|2020
+2021BCS0027|ASJ|2021
+2021BCS0162|PA|2021
+2022BEC0022|SA|2022
+2022BEC0141|AAJ|2022
+2023BCS0045|CT|2023
+ CREATE TABLE class(cno varchar(10) NOT NULL, term varchar(5) NOT NUL
+L, pno integer NOT NULL, PRIMARY KEY (cno, term), FOREIGN KEY (cno) REFERENCES course(cno), FOREIGN KEY (pno) REFERENCES professor (pno));
+sqlite> INSERT INTO class VALUES('CSE321','SEM7',1);
+sqlite> UPDATE class SET term = 'SEM5' WHERE cno = 'CSE321';
+sqlite> SELECT * FROM class;
+CSE321|SEM5|1
+sqlite> INSERT INTO class VALUES('CSE411','SEM7',1);
+sqlite> INSERT INTO class VALUES('CSE412','SEM7',2);
+sqlite> INSERT INTO class VALUES('ICS411','SEM7',5);
+sqlite> INSERT INTO class VALUES('ICS412','SEM7',4);
+sqlite> INSERT INTO class VALUES('IOE411','SEM7',3);
+sqlite> INSERT INTO class VALUES('CSE321','SEM6',6);
+sqlite> INSERT INTO class VALUES('CSE322','SEM6',6);
+sqlite> INSERT INTO class VALUES('ICS321','SEM6',1);
+sqlite> INSERT INTO class VALUES('ICS212','SEM6',1);
+sqlite> UPDATE class SET term = 'SEM3' WHERE cno = 'ICS212';
+sqlite> INSERT INTO class VALUES('ICS213','SEM3',5);
+sqlite> INSERT INTO class VALUES('ICS111','SEM1',6);
+sqlite> SELECT * FROM class;
+CSE321|SEM5|1
+CSE411|SEM7|1
+CSE412|SEM7|2
+ICS411|SEM7|5
+ICS412|SEM7|4
+IOE411|SEM7|3
+CSE321|SEM6|6
+CSE322|SEM6|6
+ICS321|SEM6|1
+ICS212|SEM3|1
+ICS213|SEM3|5
+ICS111|SEM1|6
+sqlite>
